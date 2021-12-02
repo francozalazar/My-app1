@@ -1,5 +1,6 @@
 // import React from  "react"
 import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button, } from 'react-bootstrap'
+import { WidgetCart } from './WidgetCart'
 export const NavBar = () => {
   return (
       <Navbar bg="dark" expand="lg" variant="dark">
@@ -31,7 +32,9 @@ export const NavBar = () => {
                       />
                       <Button variant="outline-info">Buscar</Button>
                   </Form>
-                  
+                  <Nav.Link>
+                    <WidgetCart/>
+                  </Nav.Link>
               </Navbar.Collapse>
           </Container>
       </Navbar>
