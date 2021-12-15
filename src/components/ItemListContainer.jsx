@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getFetch } from "./GetProductos";
+import { getFetch } from "./getFetch";
 
 
 function ItemListContainer({ saludo }) {

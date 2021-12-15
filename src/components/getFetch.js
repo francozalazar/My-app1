@@ -66,8 +66,8 @@ const products = [
     
   ];
   
-  export const getFetch = new Promise((resolve) => {
-      setTimeout(() => {
-          resolve(products);
-      }, 2000);
-      });
+   export const getFetch = new Promise((resolve)=>{
+    setTimeout(()=>{
+        resolve(products)
+    },2000)
+})
