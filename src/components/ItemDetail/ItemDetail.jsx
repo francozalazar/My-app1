@@ -1,7 +1,6 @@
 import React from 'react';
-import ItemCount from './ItemCount';
-
-
+import './ItemDetail.css';
+import ItemCount from '../ItemCount/ItemCount'
 
 function ItemDetail({item}) {
   

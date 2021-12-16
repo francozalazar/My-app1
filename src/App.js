@@ -1,26 +1,27 @@
-import logo from './logo.svg';
+ import logo from './logo.svg';
 import './App.css';
-import  ItemListContainer from './components/ItemListContainer';
+import  ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { NavBar } from './components/NavBar'
-import ItemDetailContainer from './components/ItemDetailContainer';
-// import { BrowserRouter, Routes, Route } from '..';
+import { NavBar } from './components/NavBar/NavBar'
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter,Routes, Route } from 'react-router-dom';
 
 
- function App() {
-   return (
- <div className="App">
-  
-   <NavBar/>
-       <ItemListContainer productos="MIS PRODUCTOS" />
-  
-   
-<ItemDetailContainer/>
-  
-</div>
- );
-  
- }
 
+function App() {
+  return (
+    <BrowserRouter>
+    <div className="App">
+    <NavBar/>
+                      <Routes>
+                          <Route exact path="/" element={<ItemListContainer/>} />
+                          <Route exact path="/categoria/:idCategoria" element={<ItemListContainer/>} />
+                          <Route exact path="/detalle/:id" element={<ItemDetailContainer/>} />
+                          
+                      </Routes>
+            </div>
+    </BrowserRouter>
 
- export default App;
+  );
+}
+export default App

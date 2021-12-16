@@ -1,6 +1,14 @@
-// import React from  "react"
+ import React from  "react"
 import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button, } from 'react-bootstrap'
-import { WidgetCart } from './WidgetCart'
+import  CartWidget  from '../NavBar/CartWidget'
+import { Link } from 'react-router-dom'
+
+
+
+
+
+
+
 export const NavBar = () => {
   return (
       <Navbar bg="dark" expand="lg" variant="dark">
@@ -33,7 +41,7 @@ export const NavBar = () => {
                       <Button variant="outline-info">Buscar</Button>
                   </Form>
                   <Nav.Link>
-                    <WidgetCart/>
+                    <CartWidget/>
                   </Nav.Link>
               </Navbar.Collapse>
           </Container>
