@@ -11,17 +11,14 @@ function ItemDetailContainer() {
     
     const {id}=useParams()
     useEffect(() => {
-        const getProduct = new Promise((res, rej) => {
-            setTimeout(() => {
-                res(getFetch.find(prod => prod.id === id))
-            }, 2000)
-        })
-        getProduct.then((productFound) => {
-            setItem(productFound)
-        })
+        getFetch
+            .then((productFound) => {
+                setItem(productFound.find(prod => prod.id === parseInt(id)))
+            })
             .catch(err => console.log(err))
             .finally(() => setLoading(false))
     }, [id])
+        
 
      
     // useEffect(()=>{

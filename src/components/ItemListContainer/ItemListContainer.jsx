@@ -26,7 +26,7 @@ function ItemListContainer({greeting}) {
 
 
     },[idCategoria])
-    console.log(idCategoria);
+    console.log(productos);
     return (
         <div>
             <h1>{greeting}</h1>
