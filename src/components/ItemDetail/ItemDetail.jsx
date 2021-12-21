@@ -1,9 +1,16 @@
 import React from 'react';
 import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom';
 
 function ItemDetail({item}) {
-  
+    const [goCart, setGoCart] = React.useState(false)
+
+
+    const onAdd = (cantidad) => {
+        console.log(cantidad)
+        setGoCart(true)
+    }
     
     return (
         <div className='divDetail' key={item.id}>
@@ -13,8 +20,8 @@ function ItemDetail({item}) {
                  <img className='imgDetail' src={item.imagen} alt={item.alt} />
             </p>
             <p>precio: ${item.precio}</p>
-             <p> <ItemCount  stock ={10} initial={1} />
-            </p>
+            {!goCart ? <ItemCount  stock ={10} initial={1} onAdd={onAdd} /> : <Link className='botonCarroDetail' to="/carro">Ir al carrito</Link> }
+            
            
         </div>
     )
