@@ -5,11 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { NavBar } from './components/NavBar/NavBar'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter,Routes, Route } from 'react-router-dom';
+import CartContextProvider from './context/CartContext';
+import Cart from './components/Cart/Cart'
 
 
 
 function App() {
   return (
+    <CartContextProvider>
     <BrowserRouter>
     <div className="App">
     <NavBar/>
@@ -21,7 +24,7 @@ function App() {
                       </Routes>
             </div>
     </BrowserRouter>
-
+    </CartContextProvider>
   );
 }
 export default App

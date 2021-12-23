@@ -1,0 +1,19 @@
+.button-vaciar {
+    width: 8rem;
+    height: 2rem;
+    background-color: #fdf002;
+    border-radius: 10px;
+    font-weight: bold;
+
+  }
+
+.trash{
+  color:#fdf002;
+  width: 2rem;
+  height:2rem;
+}
+.trash:hover {
+  color:rgba(0, 0, 0, 0.527);
+  background-color: #fdf002;
+  border-radius: 25%;
+} 
