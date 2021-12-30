@@ -1,11 +1,19 @@
-.cardiano{
-    padding: 10px;
+.botonDetalle {
+    background-color: #4035ba;
     border-radius: 10px;
-}
-
-
-.agregarCarro{
-    background-color: #fdf002;
-    border-radius: 10px;
-
-}
+  }
+  
+  .botonLink {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .botonLink:hover {
+    color: black;
+  }
+  
+  .imgSize {
+    width: 33rem;
+    height: 15rem;
+    margin: auto;
+  }

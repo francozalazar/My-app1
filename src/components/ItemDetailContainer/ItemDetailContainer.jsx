@@ -1,41 +1,34 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
- import {getFetch} from '../helpers/getFetch'
+import { useParams } from 'react-router-dom'
+
 import ItemDetail from '../ItemDetail/ItemDetail'
-import {useParams} from 'react-router-dom'
+
+import {doc, getDoc, getFirestore} from 'firebase/firestore'
 
 
 function ItemDetailContainer() {
-    const [item, setItem] = useState([])
+    const [item, setItem] = useState({})
     const [loading, setLoading] = useState(true)
     
-    const {id}=useParams()
-    useEffect(() => {
-        getFetch
-            .then((productFound) => {
-                setItem(productFound.find(prod => prod.id === parseInt(id)))
-            })
-            .catch(err => console.log(err))
-            .finally(() => setLoading(false))
-    }, [id])
-        
+    const {idProd} = useParams()
+ 
+    useEffect(()=>{
+        const db= getFirestore()
+        const queryDb = doc(db, 'productos', idProd)
+        getDoc(queryDb)
+        .then(resp=>setItem({id: resp.id, ...resp.data()}))
+        .catch(err=>console.log(err))
+        .finally(()=>setLoading(false))
+    
+    },[idProd])
 
-     
-    // useEffect(()=>{
-    //     getFetch
-    //     .then(resp =>setItem(resp.find(producto => producto.id === parseInt(id))))
-    //     .catch(err =>console.log(err))
-    //     .finally(()=>setLoading(false))
-        
-    // },[id])
-
-
+    
     return (
-        <div>
-            <h2>Esto es ItemDetailContainer</h2>
-            {loading ? <h3>En espera</h3>
+        <div className ="container">
+            <h1>Detalle de producto </h1>
+            {loading ? <div className="preCarga"></div>
             :  <ItemDetail item={item}/>}
-          
         </div>
     )
 }

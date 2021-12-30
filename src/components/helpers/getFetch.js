@@ -6,7 +6,7 @@ const products = [
       descripcion:"Computadora portatil de oficina liviana",
       marca:"Acer",
       precio: 28999,
-      cantidad: 1,
+      cantidad: 10,
     },
     {
       id: 2,
@@ -15,7 +15,7 @@ const products = [
       descripcion:"Computadora portatil de hogar importada, gran definicion",
       marca:"Apple",
       precio: 24999,
-      cantidad: 1,
+      cantidad: 6,
     },
     {
       id: 3,
@@ -24,7 +24,7 @@ const products = [
       descripcion:"Computadora portatil de oficina ",
       marca:"Samsung",
       precio: 18999,
-      cantidad: 1,
+      cantidad: 7,
     },
     {
       id: 4,
@@ -33,7 +33,7 @@ const products = [
       descripcion: "Computadora portatil de oficina",
       marca: "Dell",
       precio: 8999,
-      cantidad: 1,
+      cantidad: 11,
     },
     {
       id: 5,
@@ -42,7 +42,7 @@ const products = [
       descripcion:"Computadora de oficina portatil",
       marca:"HP",
       precio: 8999,
-      cantidad: 1,
+      cantidad: 12,
     },
     {
       id: 6,
@@ -51,7 +51,7 @@ const products = [
       descripcion:"Computadora portatil de gran velocidad ",
       marca:"Huawei",
       precio: 24999,
-      cantidad: 1,
+      cantidad: 14,
     },
     {
       id: 7,
@@ -60,7 +60,7 @@ const products = [
       descripcion:"Computadora de oficina portatil",
       marca:"Lenovo",
       precio: 18999,
-      cantidad: 1,
+      cantidad: 5,
     },
     {
       id: 8,
@@ -69,7 +69,7 @@ const products = [
       descripcion:"Computadora de oficina u hogar portatil",
       marca:"Lg",
       precio: 23999,
-      cantidad: 1,
+      cantidad: 6,
     },
     
   ];

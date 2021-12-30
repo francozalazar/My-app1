@@ -1,36 +1,33 @@
-import { useCartContext } from "../../context/CartContext";
+import React, {useState} from 'react';
 import './ItemCount.css';
 
-const ItemCount = ({ stock, onAdd }) => {
-    const {count, setCount} = useCartContext()
+function ItemCount({stock, initial, onAdd}) {
 
-    const addCounter = () => {
-        if (count < stock) {
-            setCount(count + 1)
-        } else {
-            alert('No queda más stock de este producto.');
-        }
+
+    const [value, setValue] = useState(initial)
+
+    const handleSuma = (valor)=>{
+        value < stock ? setValue(previo => previo+ valor): console.log('compra maxima posible')
     }
-    const substractCounter = () => {
-        if (count <= stock && count > 1) {
-            setCount(count - 1)
-        }
-        else {
-            setCount(0);
-        }
+
+    const handleResta =(valor)=>{
+        value > initial ? setValue(estadoPrevio => estadoPrevio - valor) : console.log('compra minima posible')
     }
+
     return (
-        <>
-    <button className='btn btn-primary mx-2' onClick={addCounter}>+</button>
-    <p>{count}</p>
-    <button className='btn btn-primary mx-2' onClick={substractCounter}>-</button>
-    <button className='btn btn-primary mx-3' onClick={onAdd}>Agregar al carrito</button>
-</>
-   )
-} 
+        <div>
+        <p>{value}</p>    
+        
+        <div><button className="button-count" onClick={()=>handleSuma(1)}>+</button>
+        <button className="button-count" onClick={()=>handleResta(1)}>-</button>
+        </div>
+        <button className="button-count" onClick={()=>onAdd(value)}>Agregar al carrito</button>
+        
+        </div>
+    )
+}
 
-
-export default ItemCount  
+export default ItemCount
 
 
 

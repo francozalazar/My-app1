@@ -1,41 +1,48 @@
-import React from "react";
+import React from 'react'
 import { useState, useEffect } from 'react'
-import {getFetch} from '../helpers/getFetch'
-import ItemList from '../ItemList/ItemList'
 import {useParams} from 'react-router-dom'
+import ItemList from '../ItemList/ItemList'
+
+import {getDocs, getFirestore, collection, query, where} from 'firebase/firestore'
 
 function ItemListContainer({greeting}) {
     const [productos, setProductos]=useState([])
     const [loading, setLoading] = useState(true)
 
-    const{idCategoria}=useParams()
-    useEffect(()=>{
+    const {idCategoria} = useParams()
 
-        if (idCategoria) {
-            getFetch
-            .then(resp =>setProductos(resp.filter(producto => producto.marca === idCategoria)))
-            .catch(err =>console.log(err))
-            .finally(()=>setLoading(false))
-        } else {
-            
-            getFetch
-            .then(resp =>setProductos(resp))
-            .catch(err =>console.log(err))
-            .finally(()=>setLoading(false))
-        }
+     useEffect(()=>{
+      if (idCategoria) {
+        const db= getFirestore()
+     
+        const queryCollection = query(collection(db, 'productos', )
+        , where('categoria', '==', idCategoria)); 
+        getDocs(queryCollection)
+          .then(resp =>setProductos( resp.docs.map(prod => ({ id: prod.id, ...prod.data() }) ) ) )
+        .catch(err=>console.log(err))
+        .finally(()=>setLoading(false))
+        
+        }else {
+                const db= getFirestore()
+                const queryCollection= collection(db, 'productos')
+                getDocs(queryCollection)
+                .then(resp => setProductos( resp.docs.map(prod => ({ id: prod.id, ...prod.data() }) ) ) )
+                .catch(err =>console.log(err))
+                .finally(()=>setLoading(false))
 
+        
+     }},[idCategoria])
 
-    },[idCategoria])
-    console.log(productos);
+     console.log(productos)
+    
     return (
-        <div>
+        <main className ="container">
             <h1>{greeting}</h1>
-            
-            {loading ? <h2>Cargando...</h2>
+            {loading ? <div className="preCarga"></div>
             : <ItemList productos={productos} />
             }
            
-        </div>
+        </main>
     )
 }
 

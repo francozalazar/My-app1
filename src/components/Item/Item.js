@@ -1,22 +1,26 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
 import {Link} from 'react-router-dom'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import './Item.css';
+
 function Item({prod}) {
     return (
-    <>
-    <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src={prod.imagen} />
-    <Card.Body>
-      <Card.Title>{prod.nombre}</Card.Title>
-      <Card.Text>$
-    {prod.precio}
-      </Card.Text>
-      {/* <Button variant="info" ><Link to={id}>Ver mas</Link></Button> */}
-      <Link className="text-black" to={`/detalle/${prod.id}`}>Ver producto</Link>
-    </Card.Body>
-  </Card>
-  </>
- 
-)}
+        <div key={prod.id}><Card style={{ width: '18rem', margin:'auto' }}>
+       <Card.Img className="imgSize" variant="top" src={prod.imagen} />
+                 <Card.Body>
+                    <Card.Title>{prod.nombre}</Card.Title>
+                     <Card.Text>
+                         <button className="botonDetalle"><Link className="botonLink" to={`/detalle/${prod.id}`}>Detalle de producto</Link></button>
+                              </Card.Text>
+                                </Card.Body>
+                                    <ListGroup className="list-group-flush">
+                                     <ListGroupItem>$ {prod.precio}</ListGroupItem>
+                                         </ListGroup>
+                                                            
+                                        </Card></div>
+    )
+}
 
 export default Item
