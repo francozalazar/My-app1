@@ -1,39 +1,84 @@
-import React, {useState} from 'react';
+import { useCartContext } from "../../context/CartContext";
 import './ItemCount.css';
-function ItemCount({stock, initial}) {
 
+const ItemCount = ({ stock, onAdd }) => {
+    const {count, setCount} = useCartContext()
 
-    const [value, setValue] = useState(initial)
-
-    const handleSuma = (valor)=>{
-        value < stock ? setValue(previo => previo+ valor): console.log('compra maxima posible')
+    const addCounter = () => {
+        if (count < stock) {
+            setCount(count + 1)
+        } else {
+            alert('No queda más stock de este producto.');
+        }
     }
-
-    const handleResta =(valor)=>{
-        value > initial ? setValue(estadoPrevio => estadoPrevio - valor) : console.log('compra minima posible')
+    const substractCounter = () => {
+        if (count <= stock && count > 1) {
+            setCount(count - 1)
+        }
+        else {
+            setCount(0);
+        }
     }
-
-
-    const onAdd = () => {
-        const message = `Agregaste ${value} producto`;
-        value === 1 ? alert(message) : alert(`${message}s`);
-        setValue(initial)
-      };
-
     return (
-        <div>
-        <p>{value}</p>    
-        
-        <div><button className="button-count" onClick={()=>handleSuma(1)}>+</button>
-        <button className="button-count" onClick={()=>handleResta(1)}>-</button>
-        </div>
-        <button className="button-count" onClick={()=>onAdd(value)}>Agregar al carrito</button>
-        
-        </div>
-    )
-}
+        <>
+    <button className='btn btn-primary mx-2' onClick={addCounter}>+</button>
+    <p>{count}</p>
+    <button className='btn btn-primary mx-2' onClick={substractCounter}>-</button>
+    <button className='btn btn-primary mx-3' onClick={onAdd}>Agregar al carrito</button>
+</>
+   )
+} 
 
-export default ItemCount
+
+export default ItemCount  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function ItemCount({stock, initial}) {
+
+
+//     const [value, setValue] = useState(initial)
+
+//     const handleSuma = (valor)=>{
+//         value < stock ? setValue(previo => previo+ valor): console.log('compra maxima posible')
+//     }
+
+//     const handleResta =(valor)=>{
+//         value > initial ? setValue(estadoPrevio => estadoPrevio - valor) : console.log('compra minima posible')
+//     }
+
+
+//     const onAdd = () => {
+//         const message = `Agregaste ${value} producto`;
+//         value === 1 ? alert(message) : alert(`${message}s`);
+//         setValue(initial)
+//       };
+
+//     return (
+//         <div>
+//         <p>{value}</p>    
+        
+//         <div><button className="button-count" onClick={()=>handleSuma(1)}>+</button>
+//         <button className="button-count" onClick={()=>handleResta(1)}>-</button>
+//         </div>
+//         <button className="button-count" onClick={()=>onAdd(value)}>Agregar al carrito</button>
+        
+//         </div>
+//     )
+// }
+
+
 
 
 

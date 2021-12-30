@@ -2,14 +2,11 @@
 import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button, } from 'react-bootstrap'
 import  CartWidget  from '../NavBar/CartWidget'
 import { Link } from 'react-router-dom'
-
-
-
-
-
-
+import { useCartContext } from '../../context/CartContext'
+import { Badge } from 'react-bootstrap'
 
 export const NavBar = () => {
+    const {cartList} = useCartContext()
   return (
       <Navbar bg="dark" expand="lg" variant="dark">
           <Container>
@@ -41,6 +38,7 @@ export const NavBar = () => {
                       <Button variant="outline-info">Buscar</Button>
                   </Form>
                   <Nav.Link>
+                  {cartList.length>0 && <Badge bg="info" className='p-1'>{cartList.length}</Badge>}
                     <CartWidget/>
                   </Nav.Link>
               </Navbar.Collapse>

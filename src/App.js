@@ -20,7 +20,7 @@ function App() {
                           <Route exact path="/" element={<ItemListContainer/>} />
                           <Route exact path="/categoria/:idCategoria" element={<ItemListContainer/>} />
                           <Route exact path="/detalle/:id" element={<ItemDetailContainer/>} />
-                          
+                          <Route path='/React/cart' element={<Cart />}></Route>
                       </Routes>
             </div>
     </BrowserRouter>
